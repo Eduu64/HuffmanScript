@@ -101,7 +101,7 @@ def compresor(huffman_codes,texto):
             cadena_comprimida += huffman_codes[letra]
     return cadena_comprimida
 
-def decompresor(huffman_codes, cadena_comprimida):
+def descompresor(huffman_codes, cadena_comprimida):
     cadena_decomprimida = ""
     codigo_actual = ""
     
@@ -121,10 +121,10 @@ def calculo_entropia(probabilidad_letras):
     entropia = sum(x*math.log((1/x), 2.0) for x in probabilidad_letras)
     return entropia
 
-def longitud_media(texto,compreso):
-    #print(len(compreso))
+def longitud_media(texto,comprimido):
+    #print(len(comprimido))
     #print(len(texto))
-    longitud_media = len(compreso)/len(texto)
+    longitud_media = len(comprimido)/len(texto)
     return longitud_media
 
 
@@ -140,16 +140,16 @@ huffman_codes = codigoHuffman(arbol)
 print(" ")
 for char, code in huffman_codes.items():
     print(f"Letra: {char} Bits: {code}")
-compreso = compresor(huffman_codes,texto)
+comprimido = compresor(huffman_codes,texto)
 print("")
-print(f"Comprimido: {compreso}")
+print(f"Comprimido: {comprimido}")
 entropia = calculo_entropia(arrayprobs)
-decompreso = decompresor(huffman_codes,compreso)
+decomprimido = descompresor(huffman_codes,comprimido)
 print("")
-print(f"Descomprimido: {decompreso}")
+print(f"Descomprimido: {decomprimido}")
 print("")
 print(f"Entropía: {entropia} bits/simbolo")
-longitudmedia = longitud_media(texto,compreso)
+longitudmedia = longitud_media(texto,comprimido)
 print("")
 print(f"longitud media: {longitudmedia} bits")
 
